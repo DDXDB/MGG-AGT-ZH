@@ -15,6 +15,9 @@ if %errorlevel% equ 0 (
     echo 等待30秒...
     timeout /t 30 /nobreak > nul
     echo 正在启动游戏...
+    echo 请耐心等待
+    echo 不要手动运行游戏
+    timeout /t 10 /nobreak > nul
     start "" dmmgameplayer://play/ACL/muv_luv_girlsgardenx_cl/cl/win
     exit
 ) else (
@@ -28,6 +31,7 @@ if %errorlevel% equ 0 (
         echo 正在安装Git...
         winget install --id Git.Git -e --source winget
         echo 安装完成，正在重新检查...
+        timeout /t 5 /nobreak > nul
         goto check_git
     ) else (
         echo 未安装Git，程序退出
