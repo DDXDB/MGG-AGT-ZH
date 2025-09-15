@@ -1,11 +1,10 @@
-﻿@echo off
+@echo off
+chcp 65001 >nul
+setlocal enabledelayedexpansion
 echo ==========================================
 echo 自动更新汉化文本
 echo ==========================================
-echo 按任意键继续
-echo ==========================================
 pause
-setlocal enabledelayedexpansion
 
 :check_git
 git --version > nul 2>&1
@@ -30,9 +29,9 @@ if %errorlevel% equ 0 (
     if /i "%choice%"=="y" (
         echo 正在安装Git...
         winget install --id Git.Git -e --source winget
-        echo 安装完成，正在重新检查...
+        echo 安装完成，请重新运行脚本
         timeout /t 5 /nobreak > nul
-        goto check_git
+        exit
     ) else (
         echo 未安装Git，程序退出
         exit
